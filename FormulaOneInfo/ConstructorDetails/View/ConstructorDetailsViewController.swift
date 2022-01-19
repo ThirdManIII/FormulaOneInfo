@@ -14,19 +14,19 @@ class ConstructorDetailsViewController: UIViewController, UITableViewDataSource,
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var reloadButton: UIButton!
     
-    let apiClient: ConstructorsApiClient = ConstructorsApiClientImpl()
+    var output: OutputProtocol?
     
     var constructor: Constructor?
-    var driversForConstructor: [Driver] = []
+    var drivers: [Driver] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return driversForConstructor.count
+        return drivers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DriverCell", for: indexPath)
         
-        let driver = driversForConstructor[indexPath.row]
+        let driver = drivers[indexPath.row]
         cell.textLabel?.text = "\(driver.vorname) \(driver.name)"
         
         return cell
@@ -37,15 +37,15 @@ class ConstructorDetailsViewController: UIViewController, UITableViewDataSource,
         
         let viewController = storyboard.instantiateViewController(withIdentifier: "DriverDetailsViewController") as! DriverDetailsViewController
         
-        viewController.driver = driversForConstructor[indexPath.row]
+        let presenter = DriverDetailsPresenter(viewController: viewController)
+        viewController.output = presenter
+        
+        presenter.driver = drivers[indexPath.row]
         
         navigationController?.pushViewController(viewController, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    var navigationItemTitle:  String?
-    var nationText: String?
     
     func stopActivityIndicator() {
         self.activityIndicator.stopAnimating()
@@ -54,46 +54,44 @@ class ConstructorDetailsViewController: UIViewController, UITableViewDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if navigationItemTitle == nil {
-            navigationItem.title = constructor?.name
-        
-            nationLabel.text = constructor?.nation
-        } else {
-            navigationItem.title = navigationItemTitle
-            
-            nationLabel.text = nationText
-        }
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         errorLabel.isHidden = true
         reloadButton.isHidden = true
         
         activityIndicator.startAnimating()
         
-        apiClient.getDriversForConstructor(constructorName: constructor!.constructorId, completion: { [self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let drivers):
-                    self.driversForConstructor = drivers
-                    self.driversForConstList.reloadData()
-                    
-                    stopActivityIndicator()
-                case .failure:
-                    self.driversForConstructor = []
-                    self.driversForConstList.reloadData()
-                    
-                    stopActivityIndicator()
-                    
-                    errorLabel.isHidden = false
-                    reloadButton.isHidden = false
-                }
-            }
-        })
+        output?.viewDidLoad()
     }
 
     @IBAction func reloadButtonAction(_ sender: Any) {
-        viewDidLoad()
+        output?.viewDidLoad()
+    }
+    
+}
+
+extension ConstructorDetailsViewController: ConstructorDetailsInputProtocol {
+    func showInfo(constructorData: Constructor?) {
+        constructor = constructorData
+        
+        navigationItem.title = constructorData?.name
+        nationLabel.text = constructorData?.nation
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func loadData(driversData: [Driver]) {
+        drivers = driversData
+        self.driversForConstList.reloadData()
+        
+        self.stopActivityIndicator()
+    }
+    
+    func showErrorMessage() {
+        self.driversForConstList.reloadData()
+        
+        self.stopActivityIndicator()
+        
+        self.errorLabel.isHidden = false
+        self.reloadButton.isHidden = false
     }
     
 }

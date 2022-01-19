@@ -8,7 +8,6 @@
 import Foundation
 
 // Структура, в которую будут передаваться данные из интернета
-
 struct DriverMRDataDTO: Decodable {
     let mrData: DriverTableDTO
     
@@ -33,7 +32,7 @@ struct DriversDTO: Decodable {
     }
 }
 
-struct Driver: Decodable {
+struct Driver: Decodable, Equatable {
     let vorname: String
     let name: String
     let nummer: String?
@@ -51,5 +50,3 @@ struct Driver: Decodable {
         case code = "code"
     }
 }
-
-

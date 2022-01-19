@@ -12,19 +12,27 @@ class DriverDetailsViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var landLabel: UILabel!
     
+    var output: OutputProtocol?
+    
     var driver: Driver?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var vollerName: String {
-            driver!.vorname + " " + driver!.name
-        }
-        navigationItem.title = vollerName
+        
+        output?.viewDidLoad()
+    }
+    
+}
+
+extension DriverDetailsViewController: DriverDetailsInputProtocol {
+    func showInfo(data: Driver?, name: String) {
+        navigationItem.title = name
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        numberLabel.text = driver?.nummer
-        dateLabel.text = driver?.geburtsdatum
-        landLabel.text = driver?.nation
+        numberLabel.text = data?.nummer
+        dateLabel.text = data?.geburtsdatum
+        landLabel.text = data?.nation
     }
+    
     
 }

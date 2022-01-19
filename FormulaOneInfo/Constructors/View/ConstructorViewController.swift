@@ -14,9 +14,9 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var reloadButton: UIButton!
     
-    var constructors: [Constructor] = []
+    var output: OutputProtocol?
     
-    let apiClient: ConstructorsApiClient = ConstructorsApiClientImpl()
+    var constructors: [Constructor] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return constructors.count
@@ -35,7 +35,10 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ConstructorDetailsViewController") as! ConstructorDetailsViewController
         
-        viewController.constructor = constructors[indexPath.row]
+        let presenter = ConstructorDetailsPresenter(viewController: viewController, apiClient: DriversApiClient())
+        viewController.output = presenter
+        
+        presenter.constructor = constructors[indexPath.row]
         
         navigationController?.pushViewController(viewController, animated: true)
 
@@ -50,6 +53,8 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        output = ConstructorPresenter(viewController: self, apiClient: ConstructorsApiClient())
+        
         errorLabel.isHidden = true
         reloadButton.isHidden = true
         
@@ -58,29 +63,16 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
         navigationItem.title = "Constructors"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        apiClient.getConstructors(completion: { [self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let constructors):
-                    self.constructors = constructors
-                    self.constructorsList.reloadData()
-                    
-                    stopActivityIndicator()
-                case .failure:
-                    self.constructors = []
-                    self.constructorsList.reloadData()
-                    
-                    stopActivityIndicator()
-                    
-                    errorLabel.isHidden = false
-                    reloadButton.isHidden = false
-                }
-            }
-        })
+        output?.viewDidLoad()
     }
     
     @IBAction func reloadButtonAction(_ sender: Any) {
-        viewDidLoad()
+        
     }
-    
+}
+
+extension ConstructorViewController: ConstructorInputProtocol {
+    func loadData(data: [Constructor]) {
+        constructors = data
+    }
 }

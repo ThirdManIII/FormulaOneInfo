@@ -14,9 +14,12 @@ class DriverViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var reloadButton: UIButton!
     
-    var drivers: [Driver] = []
+    @IBAction func reloadButtonAction(_ sender: Any) {
+    }
     
-    let apiClient: DriversApiClient = DriversApiClientImpl()
+    var output: OutputProtocol?
+    
+    var drivers: [Driver] = []
     
     // Функция для задания количества ячеек в секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,21 +43,20 @@ class DriverViewController: UIViewController, UITableViewDataSource, UITableView
         // При прописывании ViewController без "as!" ему присваивается базовый класс UIViewController. Для получения возможности переноса данных нужно дописать дополнение с "as!".
         let viewController = storyboard.instantiateViewController(withIdentifier: "DriverDetailsViewController") as! DriverDetailsViewController
         
-        viewController.driver = drivers[indexPath.row]
+        let presenter = DriverDetailsPresenter(viewController: viewController)
+        viewController.output = presenter
+        
+        presenter.driver = drivers[indexPath.row]
         
         navigationController?.pushViewController(viewController, animated: true)
         
         // Убираем выделение ячейки
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func stopActivityIndicator() {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        output = DriverPresenter(viewController: self, apiClient: DriversApiClient())
         
         errorLabel.isHidden = true
         reloadButton.isHidden = true
@@ -65,34 +67,14 @@ class DriverViewController: UIViewController, UITableViewDataSource, UITableView
         navigationItem.title = "Drivers"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        apiClient.getDrivers(completion: { [self] result in
-            
-            // Выводим выполнение кода в главный поток
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let drivers):
-                    self.drivers = drivers
-                    self.driversList.reloadData()
-                    
-                    stopActivityIndicator()
-                case .failure:
-                    self.drivers = []
-                    self.driversList.reloadData()
-                    
-                    stopActivityIndicator()
-                    
-                    errorLabel.isHidden = false
-                    reloadButton.isHidden = false
-                }
-            }
-        })
-        
+        output?.viewDidLoad()
     }
     
-    @IBAction func reloadButtonAction(_ sender: Any) {
-        viewDidLoad()
-    }
-    
+}
 
+extension DriverViewController: DriverInputProtocol {
+    func loadData(data: [Driver]) {
+        drivers = data
+    }
 }
 

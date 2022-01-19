@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61F8FEF2797FA4000F2CB1B /* DriverDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F8FEE2797FA4000F2CB1B /* DriverDetailsPresenter.swift */; };
+		D68AD463279073B600ECFCA7 /* DriverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68AD462279073B600ECFCA7 /* DriverPresenter.swift */; };
 		D69C5519275E194F0086B05B /* ConstructorsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C5518275E194F0086B05B /* ConstructorsApiClient.swift */; };
 		D69C551B275E2AED0086B05B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C551A275E2AED0086B05B /* NetworkService.swift */; };
-		D6AC22DB277CCA72002011B6 /* DecodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AC22DA277CCA72002011B6 /* DecodeData.swift */; };
 		D6BF1EE92754EA1E0058B065 /* DriverDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF1EE82754EA1E0058B065 /* DriverDetailsViewController.swift */; };
 		D6BF1EEB2754F0300058B065 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF1EEA2754F0300058B065 /* Driver.swift */; };
 		D6BF1EED27550CA60058B065 /* ConstructorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF1EEC27550CA60058B065 /* ConstructorViewController.swift */; };
 		D6BF1EEF27550E030058B065 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF1EEE27550E030058B065 /* Constructor.swift */; };
 		D6BF1EF12755117C0058B065 /* ConstructorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF1EF02755117C0058B065 /* ConstructorDetailsViewController.swift */; };
+		D6C163BC2797FBAF0074E31B /* DriverProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163BB2797FBAF0074E31B /* DriverProtocols.swift */; };
+		D6C163BF2797FC0C0074E31B /* DriverDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163BE2797FC0C0074E31B /* DriverDetailsProtocols.swift */; };
+		D6C163C72798106F0074E31B /* ConstructorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163C62798106F0074E31B /* ConstructorProtocols.swift */; };
+		D6C163C9279810CE0074E31B /* ConstructorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163C8279810CE0074E31B /* ConstructorPresenter.swift */; };
+		D6C163CE2798178B0074E31B /* ConstructorDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163CD2798178B0074E31B /* ConstructorDetailsProtocols.swift */; };
+		D6C163D02798179E0074E31B /* ConstructorDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C163CF2798179E0074E31B /* ConstructorDetailsPresenter.swift */; };
 		D6CF76D22756786D006D4453 /* DriversApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF76D12756786D006D4453 /* DriversApiClient.swift */; };
 		D6E140D9275365BC00F32A35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E140D8275365BC00F32A35 /* AppDelegate.swift */; };
 		D6E140DB275365BC00F32A35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E140DA275365BC00F32A35 /* SceneDelegate.swift */; };
@@ -25,14 +32,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61F8FEE2797FA4000F2CB1B /* DriverDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsPresenter.swift; sourceTree = "<group>"; };
+		D68AD462279073B600ECFCA7 /* DriverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverPresenter.swift; sourceTree = "<group>"; };
 		D69C5518275E194F0086B05B /* ConstructorsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorsApiClient.swift; sourceTree = "<group>"; };
 		D69C551A275E2AED0086B05B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		D6AC22DA277CCA72002011B6 /* DecodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeData.swift; sourceTree = "<group>"; };
 		D6BF1EE82754EA1E0058B065 /* DriverDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsViewController.swift; sourceTree = "<group>"; };
 		D6BF1EEA2754F0300058B065 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		D6BF1EEC27550CA60058B065 /* ConstructorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorViewController.swift; sourceTree = "<group>"; };
 		D6BF1EEE27550E030058B065 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
 		D6BF1EF02755117C0058B065 /* ConstructorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorDetailsViewController.swift; sourceTree = "<group>"; };
+		D6C163BB2797FBAF0074E31B /* DriverProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProtocols.swift; sourceTree = "<group>"; };
+		D6C163BE2797FC0C0074E31B /* DriverDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsProtocols.swift; sourceTree = "<group>"; };
+		D6C163C62798106F0074E31B /* ConstructorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorProtocols.swift; sourceTree = "<group>"; };
+		D6C163C8279810CE0074E31B /* ConstructorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorPresenter.swift; sourceTree = "<group>"; };
+		D6C163CD2798178B0074E31B /* ConstructorDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorDetailsProtocols.swift; sourceTree = "<group>"; };
+		D6C163CF2798179E0074E31B /* ConstructorDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorDetailsPresenter.swift; sourceTree = "<group>"; };
 		D6CF76D12756786D006D4453 /* DriversApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversApiClient.swift; sourceTree = "<group>"; };
 		D6E140D5275365BC00F32A35 /* FormulaOneInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormulaOneInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E140D8275365BC00F32A35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,24 +69,158 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D6BF1EF2275518DE0058B065 /* Drivers */ = {
+		D61F8FE82797F97800F2CB1B /* Drivers */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163BA2797FB960074E31B /* Protocols */,
+				D61F8FE92797F99B00F2CB1B /* View */,
+				D61F8FEA2797F9A300F2CB1B /* Presenter */,
+				D61F8FEB2797F9AC00F2CB1B /* Model */,
+			);
+			path = Drivers;
+			sourceTree = "<group>";
+		};
+		D61F8FE92797F99B00F2CB1B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D6E140DC275365BC00F32A35 /* DriverViewController.swift */,
-				D6BF1EE82754EA1E0058B065 /* DriverDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D61F8FEA2797F9A300F2CB1B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D68AD462279073B600ECFCA7 /* DriverPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D61F8FEB2797F9AC00F2CB1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				D6BF1EEA2754F0300058B065 /* Driver.swift */,
 			);
-			path = Drivers;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D61F8FEC2797F9FB00F2CB1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6BF1EE82754EA1E0058B065 /* DriverDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D61F8FED2797FA0C00F2CB1B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D61F8FEE2797FA4000F2CB1B /* DriverDetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D6BF1EF2275518DE0058B065 /* DriverDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163BD2797FBF70074E31B /* Protocols */,
+				D61F8FEC2797F9FB00F2CB1B /* View */,
+				D61F8FED2797FA0C00F2CB1B /* Presenter */,
+			);
+			path = DriverDetails;
 			sourceTree = "<group>";
 		};
 		D6BF1EF3275518E80058B065 /* Constructors */ = {
 			isa = PBXGroup;
 			children = (
-				D6BF1EEC27550CA60058B065 /* ConstructorViewController.swift */,
-				D6BF1EF02755117C0058B065 /* ConstructorDetailsViewController.swift */,
-				D6BF1EEE27550E030058B065 /* Constructor.swift */,
+				D6C163C5279810540074E31B /* Protocols */,
+				D6C163C027980FCE0074E31B /* View */,
+				D6C163C42798102C0074E31B /* Presenter */,
+				D6C163C32798101F0074E31B /* Model */,
 			);
 			path = Constructors;
+			sourceTree = "<group>";
+		};
+		D6C163BA2797FB960074E31B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163BB2797FBAF0074E31B /* DriverProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D6C163BD2797FBF70074E31B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163BE2797FC0C0074E31B /* DriverDetailsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D6C163C027980FCE0074E31B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6BF1EEC27550CA60058B065 /* ConstructorViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6C163C127980FD80074E31B /* ConstructorDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163CA279817230074E31B /* Protocols */,
+				D6C163C227980FF40074E31B /* View */,
+				D6C163CC2798174E0074E31B /* Presenter */,
+			);
+			path = ConstructorDetails;
+			sourceTree = "<group>";
+		};
+		D6C163C227980FF40074E31B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6BF1EF02755117C0058B065 /* ConstructorDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6C163C32798101F0074E31B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D6BF1EEE27550E030058B065 /* Constructor.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D6C163C42798102C0074E31B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163C8279810CE0074E31B /* ConstructorPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D6C163C5279810540074E31B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163C62798106F0074E31B /* ConstructorProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D6C163CA279817230074E31B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163CD2798178B0074E31B /* ConstructorDetailsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D6C163CC2798174E0074E31B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D6C163CF2798179E0074E31B /* ConstructorDetailsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D6CF76D027567827006D4453 /* Network */ = {
@@ -81,7 +229,6 @@
 				D6CF76D12756786D006D4453 /* DriversApiClient.swift */,
 				D69C5518275E194F0086B05B /* ConstructorsApiClient.swift */,
 				D69C551A275E2AED0086B05B /* NetworkService.swift */,
-				D6AC22DA277CCA72002011B6 /* DecodeData.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -105,8 +252,10 @@
 		D6E140D7275365BC00F32A35 /* FormulaOneInfo */ = {
 			isa = PBXGroup;
 			children = (
-				D6BF1EF2275518DE0058B065 /* Drivers */,
+				D61F8FE82797F97800F2CB1B /* Drivers */,
+				D6BF1EF2275518DE0058B065 /* DriverDetails */,
 				D6BF1EF3275518E80058B065 /* Constructors */,
+				D6C163C127980FD80074E31B /* ConstructorDetails */,
 				D6CF76D027567827006D4453 /* Network */,
 				D6E140D8275365BC00F32A35 /* AppDelegate.swift */,
 				D6E140DA275365BC00F32A35 /* SceneDelegate.swift */,
@@ -189,16 +338,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C163C72798106F0074E31B /* ConstructorProtocols.swift in Sources */,
+				D6C163D02798179E0074E31B /* ConstructorDetailsPresenter.swift in Sources */,
 				D69C5519275E194F0086B05B /* ConstructorsApiClient.swift in Sources */,
 				D6BF1EEB2754F0300058B065 /* Driver.swift in Sources */,
 				D6E140DD275365BC00F32A35 /* DriverViewController.swift in Sources */,
+				D6C163BC2797FBAF0074E31B /* DriverProtocols.swift in Sources */,
 				D6CF76D22756786D006D4453 /* DriversApiClient.swift in Sources */,
 				D6BF1EE92754EA1E0058B065 /* DriverDetailsViewController.swift in Sources */,
 				D69C551B275E2AED0086B05B /* NetworkService.swift in Sources */,
+				D61F8FEF2797FA4000F2CB1B /* DriverDetailsPresenter.swift in Sources */,
 				D6E140D9275365BC00F32A35 /* AppDelegate.swift in Sources */,
 				D6BF1EEF27550E030058B065 /* Constructor.swift in Sources */,
+				D6C163CE2798178B0074E31B /* ConstructorDetailsProtocols.swift in Sources */,
+				D6C163BF2797FC0C0074E31B /* DriverDetailsProtocols.swift in Sources */,
+				D6C163C9279810CE0074E31B /* ConstructorPresenter.swift in Sources */,
+				D68AD463279073B600ECFCA7 /* DriverPresenter.swift in Sources */,
 				D6BF1EF12755117C0058B065 /* ConstructorDetailsViewController.swift in Sources */,
-				D6AC22DB277CCA72002011B6 /* DecodeData.swift in Sources */,
 				D6BF1EED27550CA60058B065 /* ConstructorViewController.swift in Sources */,
 				D6E140DB275365BC00F32A35 /* SceneDelegate.swift in Sources */,
 			);
