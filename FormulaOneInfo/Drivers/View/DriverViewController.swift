@@ -9,13 +9,13 @@ import UIKit
 
 class DriverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // UITableViewDelegate, UITableViewDataSource указывают, что DriversViewController будет источником данных для TableView
-    @IBOutlet var driversList: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var errorLabel: UILabel!
-    @IBOutlet var reloadButton: UIButton!
-    
+    @IBOutlet private var driversList: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var errorLabel: UILabel!
+    @IBOutlet private var reloadButton: UIButton!
     
     @IBAction func reloadButtonAction(_ sender: Any) {
+        output?.reloadButtonDidTapped()
     }
     
     var output: OutputProtocol?
@@ -58,7 +58,13 @@ class DriverViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         output = DriverPresenter(viewController: self, apiClient: DriversApiClient())
-        
+        output?.viewDidLoad()
+    }
+    
+}
+
+extension DriverViewController: DriverInputProtocol {
+    func loadViewElements() {
         errorLabel.isHidden = true
         reloadButton.isHidden = true
         
@@ -67,15 +73,24 @@ class DriverViewController: UIViewController, UITableViewDataSource, UITableView
         // Инициализация и назначение стиля титульной надписи
         navigationItem.title = "Drivers"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        output?.viewDidLoad()
     }
     
-}
-
-extension DriverViewController: DriverInputProtocol {
     func loadData(data: [Driver]) {
         drivers = data
+        
+        driversList.reloadData()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    func showErrorMessage() {
+        driversList.reloadData()
+        
+        errorLabel.isHidden = false
+        reloadButton.isHidden = false
     }
 }
 

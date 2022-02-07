@@ -9,10 +9,10 @@ import UIKit
 
 class ConstructorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet var constructorsList: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var errorLabel: UILabel!
-    @IBOutlet var reloadButton: UIButton!
+    @IBOutlet private var constructorsList: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var errorLabel: UILabel!
+    @IBOutlet private var reloadButton: UIButton!
     
     var output: OutputProtocol?
     
@@ -45,16 +45,19 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func stopActivityIndicator() {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output = ConstructorPresenter(viewController: self, apiClient: ConstructorsApiClient())
-        
+        output?.viewDidLoad()
+    }
+    
+    @IBAction func reloadButtonAction(_ sender: Any) {
+        output?.reloadButtonDidTapped()
+    }
+}
+
+extension ConstructorViewController: ConstructorInputProtocol {
+    func loadViewElements() {
         errorLabel.isHidden = true
         reloadButton.isHidden = true
         
@@ -62,17 +65,23 @@ class ConstructorViewController: UIViewController, UITableViewDataSource, UITabl
         
         navigationItem.title = "Constructors"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        output?.viewDidLoad()
     }
     
-    @IBAction func reloadButtonAction(_ sender: Any) {
-        
-    }
-}
-
-extension ConstructorViewController: ConstructorInputProtocol {
     func loadData(data: [Constructor]) {
         constructors = data
+        
+        constructorsList.reloadData()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    func showErrorMessage() {
+        constructorsList.reloadData()
+        
+        errorLabel.isHidden = false
+        reloadButton.isHidden = false
     }
 }

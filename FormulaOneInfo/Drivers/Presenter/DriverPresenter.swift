@@ -19,6 +19,14 @@ class DriverPresenter: OutputProtocol {
     var drivers: [Driver] = []
     
     func viewDidLoad() {
+        showView()
+    }
+    
+    func reloadButtonDidTapped() {
+        showView()
+    }
+    
+    private func loadData() {
         apiClient.getDrivers(completion: { [self] result in
             
             // Выводим выполнение кода в главный поток
@@ -37,24 +45,20 @@ class DriverPresenter: OutputProtocol {
         })
     }
     
-    func tableViewDidLoad() {
-        viewController?.loadData(data: drivers)
-    }
-    
     private func dataDidReceive(data: [Driver]) {
         viewController?.loadData(data: data)
         
-        viewController?.driversList.reloadData()
-        
-        viewController?.activityIndicator.stopAnimating()
-        viewController?.activityIndicator.isHidden = true
+        viewController?.stopActivityIndicator()
     }
     
     private func dataDidNotReceive() {
-        viewController?.activityIndicator.stopAnimating()
-        viewController?.activityIndicator.isHidden = true
+        viewController?.stopActivityIndicator()
         
-        viewController?.errorLabel.isHidden = false
-        viewController?.reloadButton.isHidden = false
+        viewController?.showErrorMessage()
+    }
+    
+    private func showView() {
+        viewController?.loadViewElements()
+        loadData()
     }
 }

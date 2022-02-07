@@ -19,6 +19,14 @@ class ConstructorPresenter: OutputProtocol {
     }
     
     func viewDidLoad() {
+        showView()
+    }
+    
+    func reloadButtonDidTapped() {
+        showView()
+    }
+    
+    private func loadData() {
         apiClient.getConstructors(completion: { [self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -37,16 +45,18 @@ class ConstructorPresenter: OutputProtocol {
     
     private func dataDidReceive(data: [Constructor]) {
         viewController?.loadData(data: data)
-        viewController?.constructorsList.reloadData()
         
         viewController?.stopActivityIndicator()
     }
     
     private func dataDidNotReceive() {
-        viewController?.constructorsList.reloadData()
         viewController?.stopActivityIndicator()
         
-        viewController?.errorLabel.isHidden = false
-        viewController?.reloadButton.isHidden = false
+        viewController?.showErrorMessage()
+    }
+    
+    private func showView() {
+        viewController?.loadViewElements()
+        loadData()
     }
 }

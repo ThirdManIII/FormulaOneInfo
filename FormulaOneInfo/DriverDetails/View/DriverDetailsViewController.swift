@@ -8,9 +8,9 @@
 import UIKit
 
 class DriverDetailsViewController: UIViewController {
-    @IBOutlet var numberLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var landLabel: UILabel!
+    @IBOutlet private var numberLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var landLabel: UILabel!
     
     var output: OutputProtocol?
     

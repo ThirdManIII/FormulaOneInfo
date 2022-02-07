@@ -8,7 +8,9 @@
 import Foundation
 
 protocol ConstructorDetailsInputProtocol: AnyObject {
+    func loadViewElements()
     func showInfo(constructorData: Constructor?)
     func loadData(driversData: [Driver])
+    func stopActivityIndicator()
     func showErrorMessage()
 }

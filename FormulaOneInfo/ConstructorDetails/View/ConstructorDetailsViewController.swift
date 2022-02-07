@@ -8,11 +8,11 @@
 import UIKit
 
 class ConstructorDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet var nationLabel: UILabel!
-    @IBOutlet var driversForConstList: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var errorLabel: UILabel!
-    @IBOutlet var reloadButton: UIButton!
+    @IBOutlet private var nationLabel: UILabel!
+    @IBOutlet private var driversForConstList: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var errorLabel: UILabel!
+    @IBOutlet private var reloadButton: UIButton!
     
     var output: OutputProtocol?
     
@@ -46,30 +46,26 @@ class ConstructorDetailsViewController: UIViewController, UITableViewDataSource,
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func stopActivityIndicator() {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        errorLabel.isHidden = true
-        reloadButton.isHidden = true
-        
-        activityIndicator.startAnimating()
-        
         output?.viewDidLoad()
     }
 
     @IBAction func reloadButtonAction(_ sender: Any) {
-        output?.viewDidLoad()
+        output?.reloadButtonDidTapped()
     }
     
 }
 
 extension ConstructorDetailsViewController: ConstructorDetailsInputProtocol {
+    func loadViewElements() {
+        errorLabel.isHidden = true
+        reloadButton.isHidden = true
+        
+        activityIndicator.startAnimating()
+    }
+    
     func showInfo(constructorData: Constructor?) {
         constructor = constructorData
         
@@ -81,17 +77,18 @@ extension ConstructorDetailsViewController: ConstructorDetailsInputProtocol {
     func loadData(driversData: [Driver]) {
         drivers = driversData
         self.driversForConstList.reloadData()
-        
-        self.stopActivityIndicator()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
     
     func showErrorMessage() {
-        self.driversForConstList.reloadData()
+        driversForConstList.reloadData()
         
-        self.stopActivityIndicator()
-        
-        self.errorLabel.isHidden = false
-        self.reloadButton.isHidden = false
+        errorLabel.isHidden = false
+        reloadButton.isHidden = false
     }
     
 }

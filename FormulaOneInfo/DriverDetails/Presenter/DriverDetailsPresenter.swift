@@ -8,6 +8,10 @@
 import Foundation
 
 class DriverDetailsPresenter: OutputProtocol {
+    func reloadButtonDidTapped() {
+        
+    }
+    
     private weak var viewController: DriverDetailsInputProtocol?
     
     init(viewController: DriverDetailsInputProtocol) {

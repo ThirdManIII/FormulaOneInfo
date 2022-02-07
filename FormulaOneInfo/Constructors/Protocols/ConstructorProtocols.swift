@@ -8,5 +8,8 @@
 import Foundation
 
 protocol ConstructorInputProtocol {
+    func loadViewElements()
     func loadData(data: [Constructor])
+    func stopActivityIndicator()
+    func showErrorMessage()
 }

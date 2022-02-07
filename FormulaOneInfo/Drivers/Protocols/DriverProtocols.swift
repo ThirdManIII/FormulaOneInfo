@@ -8,9 +8,13 @@
 import Foundation
 
 protocol DriverInputProtocol: AnyObject {
+    func loadViewElements()
     func loadData(data: [Driver])
+    func stopActivityIndicator()
+    func showErrorMessage()
 }
 
 protocol OutputProtocol {
     func viewDidLoad()
+    func reloadButtonDidTapped()
 }

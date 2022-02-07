@@ -18,23 +18,37 @@ class ConstructorDetailsPresenter: OutputProtocol {
     
     var constructor: Constructor?
     var drivers: [Driver] = []
-    
-    
+    var constructorName: String {
+        constructor?.constructorId ?? ""
+    }
     
     func viewDidLoad() {
+        viewController?.loadViewElements()
         viewController?.showInfo(constructorData: constructor)
         
-        apiClient.getDriversForConstructor(constructorName: constructor!.constructorId, completion: { [self] result in
+        loadData()
+    }
+    
+    func reloadButtonDidTapped() {
+        viewController?.loadViewElements()
+        
+        loadData()
+    }
+    
+    private func loadData() {
+        apiClient.getDriversForConstructor(constructorName: constructorName, completion: { [self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let driversData):
-                    self.drivers = driversData.mrData.driverTable.drivers
-                    
+                    drivers = driversData.mrData.driverTable.drivers
                     viewController?.loadData(driversData: drivers)
+                    
+                    viewController?.stopActivityIndicator()
                 case .failure:
-                    self.drivers = []
+                    drivers = []
                     
                     viewController?.showErrorMessage()
+                    viewController?.stopActivityIndicator()
                 }
             }
         })
