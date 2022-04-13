@@ -11,3 +11,6 @@ protocol DriverDetailsInputProtocol: AnyObject {
     func showInfo(data: Driver?, name: String)
 }
 
+protocol DetailsOutputProtocol: AnyObject {
+    func viewDidLoad()
+}

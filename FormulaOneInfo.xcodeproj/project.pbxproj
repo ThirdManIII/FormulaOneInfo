@@ -274,6 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6E140E9275365BE00F32A35 /* Build configuration list for PBXNativeTarget "FormulaOneInfo" */;
 			buildPhases = (
+				D68907E22806781E00BEF7E2 /* ShellScript */,
 				D6E140D1275365BC00F32A35 /* Sources */,
 				D6E140D2275365BC00F32A35 /* Frameworks */,
 				D6E140D3275365BC00F32A35 /* Resources */,
@@ -332,6 +333,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D68907E22806781E00BEF7E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6E140D1275365BC00F32A35 /* Sources */ = {

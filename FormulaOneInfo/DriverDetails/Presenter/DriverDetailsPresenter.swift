@@ -7,24 +7,16 @@
 
 import Foundation
 
-class DriverDetailsPresenter: OutputProtocol {
-    func reloadButtonDidTapped() {
-        
-    }
-    
+class DriverDetailsPresenter: DetailsOutputProtocol {
     private weak var viewController: DriverDetailsInputProtocol?
-    
     init(viewController: DriverDetailsInputProtocol) {
         self.viewController = viewController
     }
-    
     var driver: Driver?
-    
     func viewDidLoad() {
         var vollerName: String {
             driver!.vorname + " " + driver!.name
         }
-        
         viewController?.showInfo(data: driver, name: vollerName)
     }
 }

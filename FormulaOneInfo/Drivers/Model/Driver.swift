@@ -10,7 +10,6 @@ import Foundation
 // Структура, в которую будут передаваться данные из интернета
 struct DriverMRDataDTO: Decodable {
     let mrData: DriverTableDTO
-    
     enum CodingKeys: String, CodingKey {
         case mrData = "MRData"
     }
@@ -18,7 +17,6 @@ struct DriverMRDataDTO: Decodable {
 
 struct DriverTableDTO: Decodable {
     let driverTable: DriversDTO
-    
     enum CodingKeys: String, CodingKey {
         case driverTable = "DriverTable"
     }
@@ -26,7 +24,6 @@ struct DriverTableDTO: Decodable {
 
 struct DriversDTO: Decodable {
     let drivers: [Driver]
-    
     enum CodingKeys: String, CodingKey {
         case drivers = "Drivers"
     }
@@ -39,8 +36,8 @@ struct Driver: Decodable, Equatable {
     let geburtsdatum: String
     let nation: String
     let code: String?
-    
-    // Перечисление, в котором устанавливается связь между переменными в структуре Driver и переменными в API
+    /* Перечисление, в котором устанавливается связь между переменными в структуре Driver
+     и переменными в API */
     enum CodingKeys: String, CodingKey {
         case vorname = "givenName"
         case name = "familyName"

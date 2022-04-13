@@ -13,14 +13,8 @@ protocol ConstructorsApiClientProtocol {
 
 class ConstructorsApiClient: ConstructorsApiClientProtocol {
     let networkService = NetworkServiceImpl()
-    
     func getConstructors(completion: @escaping (Result<ConstructorMRDataDTO, Error>) -> Void) {
         let url = "https://ergast.com/api/f1/2021/constructors.json"
-       
         networkService.dataReceiving(url: url, decodeStruct: ConstructorMRDataDTO.self, completion: completion)
     }
-    
-
 }
-
-
